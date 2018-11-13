@@ -1,12 +1,15 @@
 package com.tomiok.itineraryservice.usecase.gateways;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.rules.ExpectedException.none;
 
 import com.tomiok.itineraryservice.model.City;
 import com.tomiok.itineraryservice.model.CityRepository;
 import java.util.List;
 import org.junit.After;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +24,9 @@ public class CityEntityGatewayImplTest {
 
   @Autowired
   private CityEntityGateway cityEntityGateway;
+
+  @Rule
+  public ExpectedException thrown = none();
 
   @After
   public void cleanUp() {
@@ -68,5 +74,17 @@ public class CityEntityGatewayImplTest {
 
     boolean existsWithCode = cityEntityGateway.existsWithNameOrCode("ROS");
     assertThat(existsWithCode).isFalse();
+  }
+
+  @Test
+  public void shouldFail_GivenNullName() {
+    thrown.expect(NullPointerException.class);
+    cityEntityGateway.create(null, "ZAZ");
+  }
+
+  @Test
+  public void shouldFail_GivenNullCode() {
+    thrown.expect(NullPointerException.class);
+    cityEntityGateway.create("Zaragoza", null);
   }
 }

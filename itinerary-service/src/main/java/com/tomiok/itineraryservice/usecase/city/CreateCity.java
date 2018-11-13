@@ -1,6 +1,7 @@
 package com.tomiok.itineraryservice.usecase.city;
 
 import com.tomiok.itineraryservice.model.City;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +24,7 @@ public interface CreateCity {
 
   @Getter
   @Setter
+  @AllArgsConstructor
   class CreateCityCmd {
 
     private String name;
