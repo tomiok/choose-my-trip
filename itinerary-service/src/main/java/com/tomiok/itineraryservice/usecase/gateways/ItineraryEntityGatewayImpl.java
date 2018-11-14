@@ -32,8 +32,4 @@ class ItineraryEntityGatewayImpl implements ItineraryEntityGateway {
     Itinerary itinerary = new Itinerary(departure, destiny, departureTime, arrivalTime, numOfStops);
     return itineraryRepository.save(itinerary);
   }
-
-  private boolean cityExists(String cityNameOrCode) {
-    return cityEntityGateway.existsWithNameOrCode(cityNameOrCode);
-  }
 }

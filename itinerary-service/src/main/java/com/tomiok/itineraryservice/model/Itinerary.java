@@ -7,10 +7,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.Validate;
 
 @Entity
 @Getter
@@ -23,12 +23,10 @@ public class Itinerary {
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "departure_city")
-  @MapsId
   private City departureCity;
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "destiny_city")
-  @MapsId
   private City destinyCity;
 
   private LocalDateTime departureTime;
@@ -42,6 +40,13 @@ public class Itinerary {
   public Itinerary(final City departureCity, final City destinyCity, final LocalDateTime departureTime,
                    final LocalDateTime arrivalTime,
                    final int numOfStops) {
+    Validate.notNull(departureCity, "Departure city cannot be null");
+    Validate.notNull(destinyCity, "Destiny city cannot be null");
+    Validate.notNull(departureTime, "Departure time cannot be null");
+    Validate.notNull(arrivalTime, "Arrival time cannot be null");
+    Validate.isTrue(departureTime.isBefore(arrivalTime), "Arrival time should be always after than departure");
+    Validate.isTrue(numOfStops >= 0, "The number of stops cannot be negative");
+
     this.departureCity = departureCity;
     this.destinyCity = destinyCity;
     this.departureTime = departureTime;
