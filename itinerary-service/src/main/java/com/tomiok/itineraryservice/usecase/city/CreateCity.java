@@ -5,8 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Creates a city given the name and the code.
+ */
 public interface CreateCity {
 
+  /**
+   * Creates a new City
+   *
+   * @param cmd The create command.
+   *
+   * @return The city created.
+   *
+   * @see CreateCityCmd
+   */
   City createCity(CreateCityCmd cmd);
 
   @Getter

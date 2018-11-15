@@ -9,6 +9,10 @@ import lombok.Setter;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Entity class to model a city. The identifiers are the city name (i.e. New York City)
+ * and the city code (i.e. NYC)
+ */
 @Entity
 @Getter
 @Setter

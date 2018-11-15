@@ -12,6 +12,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.Validate;
 
+/**
+ * Entity class to model an itinerary.
+ * With a departure city, destiny city, departure and arrival time and the number of stops that the trip contains.
+ */
 @Entity
 @Getter
 @Setter

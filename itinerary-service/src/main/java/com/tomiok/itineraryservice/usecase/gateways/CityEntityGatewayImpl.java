@@ -42,6 +42,11 @@ public class CityEntityGatewayImpl implements CityEntityGateway {
 
   @Override
   public City findByNameOrCode(final String nameOrCode) {
-    return cityRepository.findCitiesByNameOrCode(nameOrCode);
+    City city = cityRepository.findCitiesByNameOrCode(nameOrCode);
+    if (city == null) {
+      throw new CityNotFoundException("The city " + nameOrCode + " is not in the database");
+    }
+
+    return city;
   }
 }

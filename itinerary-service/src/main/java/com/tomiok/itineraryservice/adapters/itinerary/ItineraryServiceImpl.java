@@ -12,8 +12,8 @@ public class ItineraryServiceImpl implements ItineraryService {
 
   private final FindItineraryByCity findItineraryByCity;
 
-  public ItineraryServiceImpl(final CreateItinerary createItinerary,
-                              final FindItineraryByCity findItineraryByCity) {
+  ItineraryServiceImpl(final CreateItinerary createItinerary,
+                       final FindItineraryByCity findItineraryByCity) {
     this.createItinerary = createItinerary;
     this.findItineraryByCity = findItineraryByCity;
   }

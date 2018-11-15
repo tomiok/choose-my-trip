@@ -7,7 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface ItineraryRepository extends JpaRepository<Itinerary, Long> {
 
-  @Query(value = "select it from Itinerary it where (it.departureCity.name = :city"
+  @Query(value = "select it from Itinerary it left join fetch it.departureCity departure"
+                 + " left join fetch it.destinyCity destiniy"
+                 + " where (it.departureCity.name = :city"
                  + " or it.departureCity.code = :city)")
   List<Itinerary> findAllByDepartureCity(@Param("city") String cityNameOrCode);
 }
