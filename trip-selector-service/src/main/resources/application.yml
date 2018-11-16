@@ -1,3 +1,14 @@
+# No ugly logging pollution, only errors
+logging:
+  level:
+    com:
+      netflix:
+        eureka: OFF
+        discovery: error
+spring:
+  devtools:
+    add-properties: false
+---
 spring:
   application:
     name: trip-selector-service
