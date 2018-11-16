@@ -27,3 +27,9 @@
 (-d is to run detached in the console)
 
 ## APIs
+
+After running the *docker-compose* command, you can go through the following URLs:
+
+- http://localhost:8761 ==> And see all the registerd services
+- http://localhost:8200/swagger-ui.html ==> Trip finder/selector service
+- http://localhost:8200/swagger-ui.html ==> Itinerary service
