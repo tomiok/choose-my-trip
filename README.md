@@ -1,4 +1,4 @@
-✈️✈️ Itinerary finder ✈️✈️
+✈️ Itinerary finder ✈️
 ======================================================================================
 ### A couple of microservices to find the shortest way in time and in number of stops.
 
@@ -25,3 +25,5 @@
 
 
 (-d is to run detached in the console)
+
+## APIs
