@@ -22,7 +22,7 @@ public class FindItineraryByCityImpl implements FindItinerariesByCity {
         long firstItDurationInMillis = firstIt.getDepartureTime().until(firstIt.getArrivalTime(), ChronoUnit.MILLIS);
         long secondItDurationInMillis = secondIt.getDepartureTime().until(secondIt.getArrivalTime(), ChronoUnit.MILLIS);
 
-        return Long.compare(firstItDurationInMillis, secondItDurationInMillis);
+        return Long.compare(secondItDurationInMillis, firstItDurationInMillis);
       };
 
   FindItineraryByCityImpl(final ItineraryProxy itineraryProxy) {
