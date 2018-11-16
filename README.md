@@ -1,4 +1,4 @@
-Itinerary finder 
+✈️✈️ Itinerary finder ✈️✈️
 ======================================================================================
 ### A couple of microservices to find the shortest way in time and in number of stops.
 
@@ -9,7 +9,7 @@ Itinerary finder
 ## Technology stack
 * Java 8
 * Maven 3.3.x
-* Spring Boot 2.1.0.RELEASE as base framework
+* Spring Boot 2.1.0.RELEASE as base framework.
 * Spring Cloud for Service registration, microservice communication with [Feign](https://github.com/OpenFeign/feign) and [Hystrix](https://github.com/Netflix/Hystrix), proving as a circuit breaker pattern and a super-easy/super-friendly way to write HTTP clients.
 * Simple [JWT](https://jwt.io) authentication.
 * Docker / Docker compose.
