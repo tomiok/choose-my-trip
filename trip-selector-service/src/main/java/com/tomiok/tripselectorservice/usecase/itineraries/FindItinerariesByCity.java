@@ -19,5 +19,5 @@ public interface FindItinerariesByCity {
    * @see SortedType
    * @see ItineraryResponse
    */
-  Map<SortedType, List<ItineraryResponse>> fetchItineraries(String cityIdentifier);
+  Map<SortedType, List<ItineraryResponse>> fetchAndOrderItineraries(String cityIdentifier);
 }

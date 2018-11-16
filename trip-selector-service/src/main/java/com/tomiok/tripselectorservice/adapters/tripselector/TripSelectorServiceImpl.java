@@ -16,6 +16,6 @@ public class TripSelectorServiceImpl implements TripSelectorService {
 
   @Override
   public Map<SortedType, List<ItineraryResponse>> fetchItinerariesByCity(final String cityIdentifier) {
-    return findItinerariesByCity.fetchItineraries(cityIdentifier);
+    return findItinerariesByCity.fetchAndOrderItineraries(cityIdentifier);
   }
 }
