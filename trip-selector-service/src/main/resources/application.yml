@@ -1,5 +1,9 @@
+spring:
+  application:
+    name: trip-selector-service
 feign:
   hystrix:
     enabled: true
 server:
   port: 8081
+
