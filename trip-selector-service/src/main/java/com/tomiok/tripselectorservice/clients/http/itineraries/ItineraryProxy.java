@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "itinerary-service", fallback = ItineraryRequestFallback.class, url = "localhost:8080")
+@FeignClient(name = "itinerary-service", fallback = ItineraryRequestFallback.class)
 @RibbonClient(name = "itinerary-service")
 public interface ItineraryProxy {
 
