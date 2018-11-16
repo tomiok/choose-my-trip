@@ -1,0 +1,51 @@
+version: '3.3'
+
+services:
+
+ itinerary-discovery-server:
+  build: ./itinerary-discovery-server
+  ports:
+   - "8761:8761"
+  tty:
+    true
+  restart:
+    unless-stopped
+  networks:
+      - network-eureka
+
+ itinerary-service:
+  build: ./itinerary-service
+  ports:
+   - "8100:8100"
+  tty:
+    true
+  restart:
+    unless-stopped
+  networks:
+      - network-eureka
+  depends_on:
+    - itinerary-discovery-server
+  links:
+    - itinerary-discovery-server
+
+ trip-selector-service:
+  build: ./trip-selector-service
+  ports:
+   - "8200:8200"
+  environment:
+    - REGISTRY_HOST=itinerary-discovery-server
+  tty:
+    true
+  restart:
+    unless-stopped
+  networks:
+      - network-eureka
+  depends_on:
+    - itinerary-discovery-server
+  links:
+    - itinerary-discovery-server
+
+networks:
+  network-eureka:
+    driver: bridge
+ 
