@@ -2,6 +2,8 @@ version: '3.3'
 
 services:
 
+###########################################################
+
  itinerary-discovery-server:
   build: ./itinerary-discovery-server
   ports:
@@ -13,37 +15,60 @@ services:
   networks:
       - network-eureka
 
+###########################################################
+
  itinerary-service:
   build: ./itinerary-service
   ports:
-   - "8100:8100"
+   - "8100"
   tty:
     true
   restart:
     unless-stopped
   networks:
-      - network-eureka
+   - network-eureka
   depends_on:
-    - itinerary-discovery-server
+   - itinerary-discovery-server
   links:
-    - itinerary-discovery-server
+   - itinerary-discovery-server
+  environment:
+   - SPRING_PROFILES_ACTIVE=dev
+
+###########################################################
 
  trip-selector-service:
   build: ./trip-selector-service
   ports:
-   - "8200:8200"
+   - "8200"
   environment:
-    - REGISTRY_HOST=itinerary-discovery-server
+   - SPRING_PROFILES_ACTIVE=dev
   tty:
     true
   restart:
     unless-stopped
   networks:
-      - network-eureka
+   - network-eureka
   depends_on:
-    - itinerary-discovery-server
+   - itinerary-discovery-server
   links:
-    - itinerary-discovery-server
+   - itinerary-discovery-server
+
+###########################################################
+
+ zuul-gateway:
+  build: ./zuul-gateway
+  ports:
+   - "8081:8081"
+  environment:
+   - SPRING_PROFILES_ACTIVE=dev
+  tty:
+   true
+  restart:
+   unless-stopped
+  depends_on:
+   - itinerary-discovery-server
+  links:
+   - itinerary-discovery-server
 
 networks:
   network-eureka:

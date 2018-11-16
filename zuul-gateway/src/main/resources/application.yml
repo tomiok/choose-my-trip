@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: zuul-gateway
+zuul:
+  routes:
+    ## Only routes the trip finder/selector service
+    trip-selector-service:
+      path: '/trips-selector-api/**'
+      serviceId: 'trip-selector-service'
+    ignoredServices: '*'
+---
+spring:
+  profiles:
+    active: local
+server:
+  port: ${PORT:8081}
+eureka:
+  client:
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    preferIpAddress: true
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://itinerary-discovery-server:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    preferIpAddress: true
