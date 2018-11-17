@@ -8,12 +8,12 @@ zuul:
       path: '/trips-selector-api/**'
       serviceId: 'trip-selector-service'
     ignoredServices: '*'
+server:
+  port: ${PORT:8081}
 ---
 spring:
   profiles:
     active: local
-server:
-  port: ${PORT:8081}
 eureka:
   client:
     fetchRegistry: true
@@ -28,7 +28,11 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://itinerary-discovery-server:8761/eureka/
+      defaultZone: http://${registry.host}:8761/eureka/
   instance:
     leaseRenewalIntervalInSeconds: 5
-    preferIpAddress: true
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 6000
+  eureka:
+    enabled: true
