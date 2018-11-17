@@ -3,7 +3,7 @@ spring:
     name: zuul-gateway
 zuul:
   routes:
-    ## Only routes the trip finder/selector service
+    ## Only routes the trip finder/selector service and authentication service
     trip-selector-service:
       path: '/trips-selector-api/**'
       serviceId: 'trip-selector-service'

@@ -1,4 +1,4 @@
-package com.tomiok.itineraryservice.infra;
+package com.tomiok.authservice.infra;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +18,13 @@ public class SwaggerConfig {
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.tomiok.itineraryservice.web"))
+        .apis(RequestHandlerSelectors.basePackage("com.tomiok.authservice.web"))
         .build().apiInfo(apiInfo());
   }
 
   private ApiInfo apiInfo() {
-    return new ApiInfoBuilder().title("Itinerary service")
-        .description("Cities and itineraries management - REST API")
+    return new ApiInfoBuilder().title("Authentication service")
+        .description("Provides JWT for System's users - REST API")
         .contact(new Contact("Tomas Lingotti", "github.com/tomiok", "tomaslingotti@gmail.com"))
         .license("Apache 2.0")
         .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
