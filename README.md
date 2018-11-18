@@ -57,6 +57,11 @@ After running the *docker-compose* command or as individual jars, you can go thr
 
 - http://localhost:8300/swagger-ui.html ==> Authentication service
 
+
+All services running - Eureka dashboard looks like this img: 
+
+![alt text](https://user-images.githubusercontent.com/11444365/48674949-17cc7400-eb31-11e8-881d-c21365ec3a6e.png)
+
 ------------------------------------------------------------------------------------
 ## API forwarding by Zuul
 
