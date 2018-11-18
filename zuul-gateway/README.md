@@ -1,8 +1,7 @@
 ↪️ zuul-gateway ↪️
 ========================================================================================================================
 
-## API gateway using zuul, provinding routing and security for the APIs. The URLs in this service are only visible by this 
-entry point and no one else can reach the services without passing through the API gateway.
+## API gateway using zuul, provinding routing and security for the APIs. The URLs in this service are only visible by this entry point and no one else can reach the services without passing through the API gateway.
 
 ## Compile and run
 
