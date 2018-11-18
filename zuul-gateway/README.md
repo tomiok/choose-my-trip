@@ -16,7 +16,7 @@ With docker
 2) `docker run -p 8081:8081 zuul-gateway`
 
 ## Routing table
-### This service provide a basic routing and a load balancer (Ribbon) to access the services.
+### This service provide a basic routing and a load balancer (Ribbon) to communicate with the services.
 
 This are the mappings in Zuul gateway, by service id.
 
@@ -24,3 +24,5 @@ This are the mappings in Zuul gateway, by service id.
 | :--------------------- | :--------------------- |
 | trip-selector-service  | /trips-selector-api/** |
 | auth-service           | /auth/**               |
+
+### Also this service use some basic configuration from [spring security](https://spring.io/projects/spring-security) describing which URLs are secured and some other are not (to get the JWT from auth server for example).
