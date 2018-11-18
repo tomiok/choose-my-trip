@@ -10,7 +10,7 @@ stops and the destination.
 
 ## Compile and run
 
-With the maven wraper:
+With the maven wrapper:
 
 1) `./mvnw clean verify`
 2) `./mvnw spring-boot:run`
@@ -26,7 +26,7 @@ Running locally, use the Swagger URL
 
 - Swagger
 
-http://localhost:8300/swagger-ui.html
+http://localhost:8100/swagger-ui.html
 
 
 ## Itineraries and cities
