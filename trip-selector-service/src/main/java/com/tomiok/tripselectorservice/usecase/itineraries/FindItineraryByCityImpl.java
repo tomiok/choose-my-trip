@@ -22,8 +22,7 @@ public class FindItineraryByCityImpl implements FindItinerariesByCity {
       Comparator.comparingInt(ItineraryResponse::getNumOfStops);
 
   private static final Comparator<ItineraryResponse> TIME_COMPARATOR =
-      Comparator.comparing(firstIt ->
-          Duration.between(firstIt.getDepartureTime(), firstIt.getArrivalTime()));
+      Comparator.comparing(firstIt -> Duration.between(firstIt.getDepartureTime(), firstIt.getArrivalTime()));
 
   FindItineraryByCityImpl(final ItineraryProxy itineraryProxy) {
     this.itineraryProxy = itineraryProxy;
