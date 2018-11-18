@@ -110,3 +110,5 @@ A better approach is to externalize the main security condfigs like signature al
 
 There are some repeated dependencies across the POMs. A good approach could be to have a shaerd project as a parent POM with these shared dependencies and import the parent, in order to avoid versions mismatch, classloader errors, communication problems between the frameworks, etc.
 
+Databases are also not production ready. For upper environments, it must be replaced in the project the in memory database *h2* for a relational database like MySQL or PostgreSQL.
+**[HikariCP](https://github.com/brettwooldridge/HikariCP)** should be used as connection pooling framework because of it is a lightweight and lightning JDBC CP framework and a standard for Springboot 2.x.x.  
