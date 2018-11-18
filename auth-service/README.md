@@ -9,7 +9,7 @@ by only adding the logic.
 
 ## Compile and run
 
-With the maven wraper:
+With the maven wrapper:
 
 1) `./mvnw clean verify`
 2) `./mvnw spring-boot:run`
