@@ -10,6 +10,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,13 @@ public class ItineraryController {
 
   @GetMapping("/{city}")
   public ResponseEntity<List<ItinerarySummary>> findByCity(@PathVariable("city") String cityIdentifier) {
+    validateCityIdentifier(cityIdentifier);
     return ok(itineraryService.findByCity(cityIdentifier));
+  }
+
+  private void validateCityIdentifier(String cityIdentifier) {
+    if (StringUtils.trimAllWhitespace(cityIdentifier).isEmpty()) {
+      throw new IllegalArgumentException("City identifier should not be blank or empty");
+    }
   }
 }

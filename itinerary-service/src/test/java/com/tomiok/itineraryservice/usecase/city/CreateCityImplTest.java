@@ -1,6 +1,8 @@
 package com.tomiok.itineraryservice.usecase.city;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.tomiok.itineraryservice.model.City;
@@ -28,5 +30,7 @@ public class CreateCityImplTest {
     City actual = createCity.createCity(new CreateCity.CreateCityCmd(cityName, cityCode));
     assertThat(actual.getCode()).isEqualTo(cityCode);
     assertThat(actual.getName()).isEqualTo(cityName);
+
+    verify(entityGateway, times(1)).create(cityName, cityCode);
   }
 }

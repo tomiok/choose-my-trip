@@ -1,6 +1,8 @@
 package com.tomiok.itineraryservice.usecase.city;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.tomiok.itineraryservice.model.City;
@@ -35,5 +37,7 @@ public class FindCityImplTest {
     assertThat(cities.stream().anyMatch(city -> city.getCode().equals(bcn.getCode()))).isTrue();
     assertThat(cities.stream().anyMatch(city -> city.getName().equals(tokio.getName()))).isTrue();
     assertThat(cities.stream().anyMatch(city -> city.getCode().equals(tokio.getCode()))).isTrue();
+
+    verify(cityEntityGateway, times(1)).findAll();
   }
 }
