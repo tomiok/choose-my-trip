@@ -3,6 +3,7 @@ package com.tomiok.itineraryservice.usecase.gateways;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.tomiok.itineraryservice.model.Itinerary;
+import com.tomiok.itineraryservice.model.ItineraryRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.Rule;
@@ -19,6 +20,9 @@ public class ItineraryEntityGatewayImplTest {
 
   @Autowired
   private ItineraryEntityGateway itineraryEntityGateway;
+
+  @Autowired
+  private ItineraryRepository itineraryRepository;
 
   @Rule
   public ExpectedException thrown = ExpectedException.none();
@@ -43,6 +47,18 @@ public class ItineraryEntityGatewayImplTest {
 
   @Test
   public void create() {
-    itineraryEntityGateway.create("ROS", "NYC", LocalDateTime.now(), LocalDateTime.now().plusDays(2), 4);
+    Itinerary itinerary =
+        itineraryEntityGateway.create("ROS", "NYC", LocalDateTime.now(), LocalDateTime.now().plusDays(2), 4);
+
+    assertThat(itinerary.getDepartureCity().getName()).isEqualTo("Rosario");
+    assertThat(itinerary.getDepartureCity().getCode()).isEqualTo("ROS");
+
+    assertThat(itinerary.getDestinyCity().getName()).isEqualTo("New York City");
+    assertThat(itinerary.getDestinyCity().getCode()).isEqualTo("NYC");
+
+    assertThat(itinerary.getNumOfStops()).isEqualTo(4);
+
+    // cleanup
+    itineraryRepository.delete(itinerary);
   }
 }

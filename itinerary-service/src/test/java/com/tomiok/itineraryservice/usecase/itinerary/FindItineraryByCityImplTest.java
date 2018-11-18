@@ -11,7 +11,6 @@ import com.tomiok.itineraryservice.model.Itinerary;
 import com.tomiok.itineraryservice.usecase.gateways.ItineraryEntityGateway;
 import java.time.LocalDateTime;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

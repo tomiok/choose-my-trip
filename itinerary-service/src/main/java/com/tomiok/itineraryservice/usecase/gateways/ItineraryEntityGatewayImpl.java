@@ -30,7 +30,7 @@ class ItineraryEntityGatewayImpl implements ItineraryEntityGateway {
   @Override
   public Itinerary create(final String departureCity, final String destinyCity, final LocalDateTime departureTime,
                           final LocalDateTime arrivalTime, final int numOfStops) {
-    City departure = cityEntityGateway.findByNameOrCode(destinyCity);
+    City departure = cityEntityGateway.findByNameOrCode(departureCity);
     City destiny = cityEntityGateway.findByNameOrCode(destinyCity);
 
     Itinerary itinerary = new Itinerary(departure, destiny, departureTime, arrivalTime, numOfStops);
