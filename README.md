@@ -15,7 +15,7 @@
 * Simple [JWT](https://jwt.io) authentication.
 * Docker / Docker compose.
 * Lombok to avoid some boilerplate code.
-* Zalando Problem library for better and cleaner exception handling.
+* JUnit with AssertJ and Mockito
 * Swagger for the API documentation
 
 
@@ -108,4 +108,5 @@ Explaining the args:
 The JWT flow is not production ready. 
 A better approach is to externalize the main security condfigs like signature algorithm and the secret key in a secured config server and not hardcoded in the code (and in plain text).
 
+There are some repeated dependencies across the POMs. A good approach could be to have a shaerd project as a parent POM with these shared dependencies and import the parent, in order to avoid versions mismatch, classloader errors, communication problems between the frameworks, etc.
 
