@@ -3,6 +3,7 @@ package com.tomiok.authservice.web;
 import static org.springframework.http.ResponseEntity.ok;
 
 import com.tomiok.authservice.adapters.UserService;
+import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,8 @@ public class UserAuthController {
   }
 
   @PostMapping
-  public ResponseEntity<String> authenticateWithDatabase(@RequestBody UserAndPasswordRequest req) {
+  public ResponseEntity<String> authenticateWithDatabase(
+      @RequestBody @Valid UserAndPasswordHttpRequest req) {
     String jwt = userService.authenticateUserWithDatabase(req.getUsername(), req.getPassword());
     return ok(jwt);
   }

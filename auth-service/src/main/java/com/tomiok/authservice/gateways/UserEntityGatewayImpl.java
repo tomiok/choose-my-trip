@@ -20,7 +20,7 @@ public class UserEntityGatewayImpl implements UserEntityGateway {
   public User findByUsernameAndPassword(final String username, final String password) {
     User user = userRepository.findUserByUsernameAndPassword(username, password);
     if (user == null) {
-      log.warn("username or password are not valid");
+      log.warn("No matches with the given username and password");
       throw new EntityNotFoundException();
     }
 

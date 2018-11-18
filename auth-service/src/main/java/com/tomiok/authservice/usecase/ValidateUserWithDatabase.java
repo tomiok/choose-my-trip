@@ -5,11 +5,11 @@ import com.tomiok.authservice.gateways.UserEntityGateway;
 import com.tomiok.authservice.model.User;
 import java.nio.charset.StandardCharsets;
 
-public class ValidateUserImpl implements ValidateUser {
+public class ValidateUserWithDatabase implements ValidateUser {
 
   private UserEntityGateway userEntityGateway;
 
-  ValidateUserImpl(final UserEntityGateway userEntityGateway) {
+  ValidateUserWithDatabase(final UserEntityGateway userEntityGateway) {
     this.userEntityGateway = userEntityGateway;
   }
 

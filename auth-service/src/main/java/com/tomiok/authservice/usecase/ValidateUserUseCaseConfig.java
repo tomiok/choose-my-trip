@@ -12,6 +12,6 @@ public class ValidateUserUseCaseConfig {
 
   @Bean
   public ValidateUser validateUser(final UserEntityGateway userEntityGateway) {
-    return new ValidateUserImpl(userEntityGateway);
+    return new ValidateUserWithDatabase(userEntityGateway);
   }
 }
