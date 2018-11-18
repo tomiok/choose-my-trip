@@ -42,8 +42,8 @@ public class FindItineraryByCityImpl implements FindItinerariesByCity {
     Order timeOrder = orderList(SortedType.BY_TIME, itineraries, TIME_COMPARATOR);
     Order stopsOrder = orderList(SortedType.BY_STOPS, itineraries, STOPS_COMPARATOR);
 
-    itinerariesByCriteria.computeIfAbsent(timeOrder.getSortedType(), (k) -> timeOrder.getOrderedResponse());
-    itinerariesByCriteria.computeIfAbsent(stopsOrder.getSortedType(), (k) -> stopsOrder.getOrderedResponse());
+    itinerariesByCriteria.computeIfAbsent(timeOrder.getSortedType(), key -> timeOrder.getOrderedResponse());
+    itinerariesByCriteria.computeIfAbsent(stopsOrder.getSortedType(), key -> stopsOrder.getOrderedResponse());
 
     return itinerariesByCriteria;
   }

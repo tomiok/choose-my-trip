@@ -39,7 +39,7 @@ services:
  trip-selector-service:
   build: ./trip-selector-service
   ports:
-   - "8200". # Not portbinding needed. - Zuul will fetch by name
+   - "8200" # Not portbinding needed. - Zuul will fetch by name
   environment:
    - SPRING_PROFILES_ACTIVE=dev
   tty:
@@ -59,6 +59,26 @@ services:
   build: ./zuul-gateway
   ports:
    - "8081:8081"
+  environment:
+   - SPRING_PROFILES_ACTIVE=dev
+   - REGISTRY_HOST=itinerary-discovery-server
+  tty:
+   true
+  networks:
+   - network-eureka
+  restart:
+   unless-stopped
+  depends_on:
+   - itinerary-discovery-server
+  links:
+   - itinerary-discovery-server
+
+###########################################################
+
+ auth-service:
+  build: ./auth-service
+  ports:
+   - "8300"
   environment:
    - SPRING_PROFILES_ACTIVE=dev
    - REGISTRY_HOST=itinerary-discovery-server
