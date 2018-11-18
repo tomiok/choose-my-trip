@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 class UserAndPasswordHttpRequest {
 
-  @NotNull
-  @NotEmpty
+  @NotNull(message = "username cannot be null")
+  @NotEmpty(message = "username cannot be empty")
   private String username;
 
-  @NotNull
-  @NotEmpty
+  @NotNull(message = "password cannot be null")
+  @NotEmpty(message = "password cannot be empty")
   private String password;
 }

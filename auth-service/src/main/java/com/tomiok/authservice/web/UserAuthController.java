@@ -23,7 +23,7 @@ public class UserAuthController {
   @PostMapping
   public ResponseEntity<String> authenticateWithDatabase(
       @RequestBody @Valid UserAndPasswordHttpRequest req) {
-    String jwt = userService.authenticateUserWithDatabase(req.getUsername(), req.getPassword());
+    String jwt = userService.authenticateUserWithDatabase(req.getUsername().toLowerCase(), req.getPassword());
     return ok(jwt);
   }
 }

@@ -4,19 +4,19 @@ logging:
     com:
       netflix:
         eureka: OFF
-        discovery: error
+        discovery: OFF
 spring:
   devtools:
     add-properties: false
+feign:
+  hystrix:
+    enabled: true
 ---
 spring:
   application:
     name: trip-selector-service
   profiles:
     active: dev
-feign:
-  hystrix:
-    enabled: true
 server:
   port: 8200
 eureka:
@@ -31,9 +31,6 @@ spring:
   profiles: local
   application:
     name: trip-selector-service
-feign:
-  hystrix:
-    enabled: true
 server:
   port: 8200
 eureka:
