@@ -4,6 +4,7 @@
 ## This service provides sorting functionality. Shows the itineraries in 2 lists.
 - One ordered by number of stops
 - One ordered by itinerary duration
+
 Using the data allocated in **itinerary-service**
 
 ## Compile and run
