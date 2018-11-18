@@ -53,12 +53,12 @@ public class TripClientControllerTest {
 
     // Three simple itineraries, with 0,1 and 2 stops.
     // The 1 stops is longer than the 2 stops
-    ItineraryResponse ros_bsas_0stops = mockIt(now, now.plusDays(1), "Rosario", "ROS", "Buenos Aires", "BSAS", 0);
-    ItineraryResponse ros_bsas_1stop = mockIt(now, now.plusDays(2), "Rosario", "ROS", "Buenos Aires", "BSAS", 1);
-    ItineraryResponse ros_bsas_2stop = mockIt(now, now.plusHours(16), "Rosario", "ROS", "Buenos Aires", "BSAS", 2);
+    ItineraryResponse stops_0 = mockIt(1, now, now.plusDays(1), "Rosario", "ROS", "Buenos Aires", "BSAS", 0);
+    ItineraryResponse stops_1 = mockIt(2, now, now.plusDays(2), "Rosario", "ROS", "Buenos Aires", "BSAS", 1);
+    ItineraryResponse stops_2 = mockIt(3, now, now.plusHours(16), "Rosario", "ROS", "Buenos Aires", "BSAS", 2);
 
-    createMockResponse(SortedType.BY_STOPS, asList(ros_bsas_0stops, ros_bsas_1stop, ros_bsas_2stop));
-    createMockResponse(SortedType.BY_TIME, asList(ros_bsas_0stops, ros_bsas_2stop, ros_bsas_1stop));
+    createMockResponse(SortedType.BY_STOPS, asList(stops_0, stops_1, stops_2));
+    createMockResponse(SortedType.BY_TIME, asList(stops_0, stops_2, stops_1));
 
     when(tripSelectorService.fetchItinerariesByCity(city)).thenReturn(resByType);
 
@@ -102,6 +102,7 @@ public class TripClientControllerTest {
   }
 
   private ItineraryResponse mockIt(
+      long id,
       LocalDateTime departureTime,
       LocalDateTime arrivalTime,
       String departureCityName,
@@ -110,7 +111,8 @@ public class TripClientControllerTest {
       String arrivalCityCode,
       int numOfStops
   ) {
-    return new ItineraryResponse(departureCityName, departureCityCode, arrivalCityName, arrivalCityCode, departureTime,
+    return new ItineraryResponse(id, departureCityName, departureCityCode, arrivalCityName, arrivalCityCode,
+        departureTime,
         arrivalTime, numOfStops);
   }
 }

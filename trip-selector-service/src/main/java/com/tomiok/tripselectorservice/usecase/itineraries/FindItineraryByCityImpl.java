@@ -4,7 +4,7 @@ import static java.util.stream.Collectors.toList;
 
 import com.tomiok.tripselectorservice.clients.http.itineraries.ItineraryProxy;
 import com.tomiok.tripselectorservice.clients.http.itineraries.ItineraryResponse;
-import java.time.temporal.ChronoUnit;
+import java.time.Duration;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -22,12 +22,8 @@ public class FindItineraryByCityImpl implements FindItinerariesByCity {
       Comparator.comparingInt(ItineraryResponse::getNumOfStops);
 
   private static final Comparator<ItineraryResponse> TIME_COMPARATOR =
-      (firstIt, secondIt) -> {
-        long firstItDurationInMillis = firstIt.getDepartureTime().until(firstIt.getArrivalTime(), ChronoUnit.MILLIS);
-        long secondItDurationInMillis = secondIt.getDepartureTime().until(secondIt.getArrivalTime(), ChronoUnit.MILLIS);
-
-        return Long.compare(secondItDurationInMillis, firstItDurationInMillis);
-      };
+      Comparator.comparing(firstIt ->
+          Duration.between(firstIt.getDepartureTime(), firstIt.getArrivalTime()));
 
   FindItineraryByCityImpl(final ItineraryProxy itineraryProxy) {
     this.itineraryProxy = itineraryProxy;
