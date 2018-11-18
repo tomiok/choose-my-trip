@@ -67,6 +67,19 @@ public class CityEntityGatewayImplTest {
   }
 
   @Test
+  public void findByNameOrCode() {
+    City ros = cityEntityGateway.findByNameOrCode("ROS");
+    assertThat(ros.getName()).isEqualTo("Rosario");
+    assertThat(ros.getCode()).isEqualTo("ROS");
+  }
+
+  @Test
+  public void shouldNotFindAnyCity() {
+    thrown.expect(CityNotFoundException.class);
+    cityEntityGateway.findByNameOrCode("UNKNOWN__CODE");
+  }
+
+  @Test
   public void shouldFail_GivenNullName() {
     thrown.expect(NullPointerException.class);
     cityEntityGateway.create(null, "ZAZ");

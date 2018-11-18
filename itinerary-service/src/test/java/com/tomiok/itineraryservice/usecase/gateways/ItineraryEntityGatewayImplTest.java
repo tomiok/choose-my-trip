@@ -5,7 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.tomiok.itineraryservice.model.Itinerary;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +19,9 @@ public class ItineraryEntityGatewayImplTest {
 
   @Autowired
   private ItineraryEntityGateway itineraryEntityGateway;
+
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
 
   @Test
   public void findByCityWithCode() {
@@ -32,8 +37,8 @@ public class ItineraryEntityGatewayImplTest {
 
   @Test
   public void shouldReturnEmptyList_GivenUnknownCity() {
-    List<Itinerary> itineraries = itineraryEntityGateway.findByCity("Unknown city");
-    assertThat(itineraries).isEmpty();
+    thrown.expect(EmptyItinerariesException.class);
+    itineraryEntityGateway.findByCity("Unknown city");
   }
 
   @Test

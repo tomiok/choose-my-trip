@@ -6,6 +6,7 @@ import static org.springframework.http.ResponseEntity.status;
 import com.tomiok.itineraryservice.adapters.city.CityService;
 import com.tomiok.itineraryservice.usecase.city.CreateCity;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class CityController {
   }
 
   @PostMapping
-  public ResponseEntity<CreateCity.CitySummary> createCity(@RequestBody CreateCityHttpRequest req) {
+  public ResponseEntity<CreateCity.CitySummary> createCity(@RequestBody @Valid CreateCityHttpRequest req) {
     CreateCity.CitySummary summary = cityService
         .createCity(new CreateCity.CreateCityCmd(req.getName(), req.getCode()));
     return status(HttpStatus.CREATED).body(summary);

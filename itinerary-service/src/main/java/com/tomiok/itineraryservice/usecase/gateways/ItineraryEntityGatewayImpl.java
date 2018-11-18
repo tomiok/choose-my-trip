@@ -20,7 +20,11 @@ class ItineraryEntityGatewayImpl implements ItineraryEntityGateway {
 
   @Override
   public List<Itinerary> findByCity(final String cityNameOrCode) {
-    return itineraryRepository.findAllByDepartureCity(cityNameOrCode);
+    List<Itinerary> allByDepartureCity = itineraryRepository.findAllByDepartureCity(cityNameOrCode);
+    if (allByDepartureCity.isEmpty()) {
+      throw new EmptyItinerariesException("Not itineraries");
+    }
+    return allByDepartureCity;
   }
 
   @Override

@@ -1,6 +1,7 @@
 package com.tomiok.itineraryservice.usecase.itinerary;
 
 import com.tomiok.itineraryservice.model.Itinerary;
+import com.tomiok.itineraryservice.usecase.gateways.CityNotFoundException;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import lombok.Setter;
 public interface CreateItinerary {
 
   /**
-   * Creates a new itinerary.
+   * Creates a new itinerary. Throw {@link CityNotFoundException} if departure or destiny city are not in database.
    *
    * @param createItineraryCmd The create command.
    *
@@ -40,6 +41,7 @@ public interface CreateItinerary {
   @Setter
   class ItinerarySummary {
 
+    private long id;
     private String departureCityName;
     private String departureCityCode;
     private String destinyCityName;
@@ -56,6 +58,7 @@ public interface CreateItinerary {
       this.departureTime = itinerary.getDepartureTime();
       this.arrivalTime = itinerary.getArrivalTime();
       this.numOfStops = itinerary.getNumOfStops();
+      this.id = itinerary.getId();
     }
   }
 }

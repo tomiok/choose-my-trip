@@ -1,5 +1,6 @@
 package com.tomiok.itineraryservice.usecase.itinerary;
 
+import com.tomiok.itineraryservice.usecase.gateways.CityEntityGateway;
 import com.tomiok.itineraryservice.usecase.gateways.EntitiesGatewayConfig;
 import com.tomiok.itineraryservice.usecase.gateways.ItineraryEntityGateway;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,8 @@ public class ItineraryUseCasesConfig {
   }
 
   @Bean
-  public CreateItinerary createItinerary(final ItineraryEntityGateway itineraryEntityGateway) {
-    return new CreateItineraryImpl(itineraryEntityGateway);
+  public CreateItinerary createItinerary(final ItineraryEntityGateway itineraryEntityGateway,
+                                         final CityEntityGateway cityEntityGateway) {
+    return new CreateItineraryImpl(itineraryEntityGateway, cityEntityGateway);
   }
 }
