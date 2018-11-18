@@ -117,3 +117,4 @@ There are some repeated dependencies across the POMs. A good approach could be t
 
 Databases are also not production ready. For upper environments, it must be replaced in the project the in memory database *h2* for a relational database like MySQL or PostgreSQL.
 **[HikariCP](https://github.com/brettwooldridge/HikariCP)** should be used as connection pooling framework because of it is a lightweight and lightning JDBC CP framework and a standard for Springboot 2.x.x.  
+Using a cloud solution, i.e. Amazon Web Services (AWS), it is possible to get a [RDS](https://aws.amazon.com/rds/) solution, using any relational database and providing an url, username and password to connect, among other features and functionalities that are production-ready.
