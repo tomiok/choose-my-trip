@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/db")
+@RequestMapping
 public class UserAuthController {
 
   private final UserService userService;
@@ -20,7 +20,7 @@ public class UserAuthController {
     this.userService = userService;
   }
 
-  @PostMapping
+  @PostMapping("/db")
   public ResponseEntity<String> authenticateWithDatabase(
       @RequestBody @Valid UserAndPasswordHttpRequest req) {
     String jwt = userService.authenticateUserWithDatabase(req.getUsername().toLowerCase(), req.getPassword());
