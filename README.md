@@ -10,6 +10,7 @@
 * Java 8
 * Maven 3.3.x
 * Spring Boot 2.1.0.RELEASE as base framework.
+* Spring security
 * Spring Cloud for Service registration, microservice communication with [Feign](https://github.com/OpenFeign/feign) and [Hystrix](https://github.com/Netflix/Hystrix), proving as a circuit breaker pattern and a super-easy/super-friendly way to write HTTP clients.
 * [Zuul](https://github.com/Netflix/zuul) reverse proxy as API gateway
 * Simple [JWT](https://jwt.io) authentication.
