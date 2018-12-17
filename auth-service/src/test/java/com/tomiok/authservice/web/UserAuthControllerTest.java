@@ -2,6 +2,7 @@ package com.tomiok.authservice.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,7 +37,7 @@ public class UserAuthControllerTest {
     String password = "topsecrethashed";
 
     UserAndPasswordHttpRequest req = createHttpRequest(username, password);
-    Mockito.when(userService.authenticateUserWithDatabase(username, password)).thenReturn("some-cool-token");
+    when(userService.authenticateUserWithDatabase(username, password)).thenReturn("some-cool-token");
 
     String res = mockMvc
         .perform(post("/db")
@@ -51,7 +52,6 @@ public class UserAuthControllerTest {
   @Test
   public void shouldFail_GivenEmptyPassword() throws Exception {
     String username = "tomas";
-    String password = "topsecrethashed";
 
     UserAndPasswordHttpRequest req = createHttpRequest(username, StringUtils.EMPTY);
 
@@ -66,7 +66,6 @@ public class UserAuthControllerTest {
   @Test
   public void shouldFail_GivenNullPassword() throws Exception {
     String username = "tomas";
-    String password = "topsecrethashed";
 
     UserAndPasswordHttpRequest req = createHttpRequest(username, null);
 
